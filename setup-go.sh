@@ -5,7 +5,9 @@ GO_LINUX_PACKAGE_URL="https://go.dev/dl/$(curl https://go.dev/VERSION?m=text).li
 if [[ "${INPUT_GOVERSION##*/}" == "go.mod" ]]; then
     INPUT_GOVERSION=$(grep -e '^go' -m 1 ${INPUT_GOVERSION} | sed -e 's/go //g')
 fi
-if [[ ${INPUT_GOVERSION} == "1.19" ]]; then
+if [[ ${INPUT_GOVERSION} == "1.20" ]]; then
+    GO_LINUX_PACKAGE_URL="https://go.dev/dl/go1.20.2.linux-${ARCH}.tar.gz"
+elif [[ ${INPUT_GOVERSION} == "1.19" ]]; then
     GO_LINUX_PACKAGE_URL="https://go.dev/dl/go1.19.1.linux-${ARCH}.tar.gz"
 elif [[ ${INPUT_GOVERSION} == "1.18" ]]; then
     GO_LINUX_PACKAGE_URL="https://go.dev/dl/go1.18.6.linux-${ARCH}.tar.gz"
